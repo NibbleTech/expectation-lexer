@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
+use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectOrderResolver;
+use NibbleTech\ExpectationLexer\LexerResult;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\AssertTokens;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
@@ -43,6 +45,32 @@ class ExpectOrderResolverTest extends TestCase
                 T_C::fromLexeme('c'),
                 T_B::fromLexeme('b'),
                 T_A::fromLexeme('a'),
+            ]
+        );
+    }
+
+    /**
+     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     */
+    public function test_throws_on_incomplete_order()
+    {
+        $expectOption = Expect::order([
+            Expect::one(T_A::token()),
+            Expect::one(T_B::token()),
+            Expect::one(T_C::token()),
+            Expect::one(T_D::token()),
+        ]);
+
+        self::expectException(TokenNotFound::class);
+
+        AssertTokens::assertResolved(
+            new ExpectOrderResolver(),
+            $expectOption,
+            StringContent::with('abc'),
+            [
+                T_A::fromLexeme('a'),
+                T_B::fromLexeme('b'),
+                T_C::fromLexeme('c'),
             ]
         );
     }

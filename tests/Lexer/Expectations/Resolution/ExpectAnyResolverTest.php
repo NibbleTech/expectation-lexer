@@ -97,7 +97,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_souble_nested_any_of_resolves()
+    public function test_double_nested_any_of_resolves()
     {
         $expectOption = Expect::anyOf([
             Expect::anyOf([
@@ -145,5 +145,76 @@ class ExpectAnyResolverTest extends TestCase
                 T_D::fromLexeme('d')
             ]
         );
+    }
+
+    /**
+     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     */
+    public function test_any_of_orders()
+    {
+        $expectOption = Expect::anyOf([
+            Expect::anyOf([
+                Expect::order([
+                    Expect::one(T_A::token()),
+                    Expect::one(T_B::token()),
+                ]),
+                Expect::order([
+                    Expect::one(T_C::token()),
+                    Expect::one(T_D::token()),
+                ]),
+            ]),
+        ]);
+
+        AssertTokens::assertResolved(
+            $this->resolver,
+            $expectOption,
+            StringContent::with('ab'),
+            [
+                T_A::fromLexeme('a'),
+                T_B::fromLexeme('b'),
+            ]
+        );
+
+        AssertTokens::assertResolved(
+            $this->resolver,
+            $expectOption,
+            StringContent::with('cd'),
+            [
+                T_C::fromLexeme('c'),
+                T_D::fromLexeme('d'),
+            ]
+        );
+    }
+
+    /**
+     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     */
+    public function test_any_of_orders_with_similar_beginnings()
+    {
+        $this->markTestSkipped('Use case not supported yet');
+
+        $expectOption = Expect::anyOf([
+            Expect::anyOf([
+                Expect::order([
+                    Expect::one(T_A::token()),
+                    Expect::one(T_B::token()),
+                ]),
+                Expect::order([
+                    Expect::one(T_A::token()),
+                    Expect::one(T_D::token()),
+                ]),
+            ]),
+        ]);
+
+        AssertTokens::assertResolved(
+            $this->resolver,
+            $expectOption,
+            StringContent::with('ad'),
+            [
+                T_A::fromLexeme('a'),
+                T_B::fromLexeme('d'),
+            ]
+        );
+
     }
 }
