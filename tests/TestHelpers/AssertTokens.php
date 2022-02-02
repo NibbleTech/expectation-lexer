@@ -23,7 +23,9 @@ class AssertTokens
         StringContent $content,
         array $tokens
     ): void {
-        $lexerResult = LexerProgress::new();
+        $lexerResult = LexerProgress::new(
+            $content
+        );
 
         $resolver->resolve(
             $lexerResult,

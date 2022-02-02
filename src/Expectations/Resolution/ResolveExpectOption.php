@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
-use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
@@ -19,15 +18,13 @@ class ResolveExpectOption
 {
     public function resolve(
         LexerProgress $lexerResult,
-        ExpectOption $expectOption,
-        StringContent $content
+        ExpectOption $expectOption
     ): void {
         $resolver = $this->getResolver($expectOption);
 
         $resolver->resolve(
             $lexerResult,
-            $expectOption,
-            $content
+            $expectOption
         );
 
         // repeating stuff could happen here, but would require the discovery stuff maybe?

@@ -18,12 +18,13 @@ class Lexer
 
     public function lex(StringContent $content): LexerProgress
     {
-        $lexerResult = LexerProgress::new();
+        $lexerResult = LexerProgress::new(
+            $content
+        );
 
         $this->resolver->resolve(
             $lexerResult,
             $this->config->getExpectedTokenOrder(),
-            $content
         );
 
         return $lexerResult;

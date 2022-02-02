@@ -6,7 +6,6 @@ namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
-use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
 
@@ -21,9 +20,8 @@ class ExpectOrderResolver implements ExpectationResolver
     }
 
     public function resolve(
-        LexerProgress $lexerResult,
-        ExpectOption $expectOption,
-        StringContent $content
+        LexerProgress $lexerProgress,
+        ExpectOption $expectOption
     ): void {
         if (!$expectOption instanceof ExpectOrder) {
             throw WrongExpectOption::shouldBe($expectOption, ExpectOrder::class);
@@ -31,9 +29,8 @@ class ExpectOrderResolver implements ExpectationResolver
 
         foreach ($expectOption->getAllExpects() as $orderedExpectOption) {
             $this->resolver->resolve(
-                $lexerResult,
-                $orderedExpectOption,
-                $content
+                $lexerProgress,
+                $orderedExpectOption
             );
         }
     }
