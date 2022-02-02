@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
-use NibbleTech\ExpectationLexer\LexerResult\LexerResult;
+use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
@@ -21,7 +21,7 @@ class ExpectOrderResolver implements ExpectationResolver
     }
 
     public function resolve(
-        LexerResult $lexerResult,
+        LexerProgress $lexerResult,
         ExpectOption $expectOption,
         StringContent $content
     ): void {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\TokenFinder;
 
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
-use NibbleTech\ExpectationLexer\LexerResult\LexerResult;
+use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 
 class Lexer
@@ -16,9 +16,9 @@ class Lexer
     ) {
     }
 
-    public function lex(StringContent $content): LexerResult
+    public function lex(StringContent $content): LexerProgress
     {
-        $lexerResult = LexerResult::new();
+        $lexerResult = LexerProgress::new();
 
         $this->resolver->resolve(
             $lexerResult,
