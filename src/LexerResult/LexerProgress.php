@@ -63,7 +63,7 @@ class LexerProgress
         $this->applyEvent($event);
     }
 
-    public function applyEvent(LexerEvent $event): void
+    private function applyEvent(LexerEvent $event): void
     {
         $this->eventStore[] = $event;
 
@@ -80,7 +80,7 @@ class LexerProgress
         $this->content->progressForToken($tokenFound->getToken());
     }
 
-    public function applyEventContentAdded(ContentAdded $contentAdded): void
+    private function applyEventContentAdded(ContentAdded $contentAdded): void
     {
         $this->content = $contentAdded->getContent();
     }
