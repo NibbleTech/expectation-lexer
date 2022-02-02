@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\TestHelpers;
 
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectationResolver;
-use NibbleTech\ExpectationLexer\LexerResult;
+use NibbleTech\ExpectationLexer\LexerResult\LexerResult;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\Tokens\Token;

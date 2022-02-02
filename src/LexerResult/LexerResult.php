@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NibbleTech\ExpectationLexer;
+namespace NibbleTech\ExpectationLexer\LexerResult;
 
 use NibbleTech\ExpectationLexer\Tokens\Token;
 

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
-use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectOrderResolver;
-use NibbleTech\ExpectationLexer\LexerResult;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\AssertTokens;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
