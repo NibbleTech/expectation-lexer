@@ -25,5 +25,7 @@ class Lexer
             $this->config->getExpectedTokenOrder(),
             $content
         );
+
+        return $lexerResult;
     }
 }
