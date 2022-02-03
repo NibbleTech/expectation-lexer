@@ -23,8 +23,8 @@ class ExpectOneResolver implements ExpectationResolver
         $tokenFinder = new TokenFinder();
 
         $foundToken = $tokenFinder->findToken(
-            $lexerProgress->getContent(),
-            $expectOption->getToken()
+            $lexerProgress,
+            $expectOption->getToken(),
         );
 
         $lexerProgress->addFoundToken($foundToken);

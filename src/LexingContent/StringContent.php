@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\LexingContent;
 
-use NibbleTech\ExpectationLexer\Tokens\Token;
-
 class StringContent
 {
     private string $content;
@@ -26,37 +24,22 @@ class StringContent
         return $this->content;
     }
 
-    public function getLookahead(): string
-    {
+    public function getLookahead(
+        int $cursorPosition
+    ): string {
         return substr(
             $this->content,
-            $this->cursorPosition
+            $cursorPosition
         );
     }
 
-    public function getLookbehind(): string
-    {
+    public function getLookbehind(
+        int $cursorPosition
+    ): string {
         return substr(
             $this->content,
             0,
-            $this->cursorPosition
+            $cursorPosition
         );
-    }
-
-    public function getCursorPosition(): int
-    {
-        return $this->cursorPosition;
-    }
-
-    public function progressForToken(Token $token): void
-    {
-        $this->incrementCursorPosition(
-            strlen($token->getLexeme())
-        );
-    }
-
-    private function incrementCursorPosition(int $amount): void
-    {
-        $this->cursorPosition += $amount;
     }
 }
