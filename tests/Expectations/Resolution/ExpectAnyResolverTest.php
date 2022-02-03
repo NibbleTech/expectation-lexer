@@ -191,8 +191,6 @@ class ExpectAnyResolverTest extends TestCase
      */
     public function test_any_of_orders_with_similar_beginnings()
     {
-        $this->markTestSkipped('Use case not supported yet');
-
         $expectOption = Expect::anyOf([
             Expect::anyOf([
                 Expect::order([
@@ -212,7 +210,7 @@ class ExpectAnyResolverTest extends TestCase
             StringContent::with('ad'),
             [
                 T_A::fromLexeme('a'),
-                T_B::fromLexeme('d'),
+                T_D::fromLexeme('d'),
             ]
         );
 

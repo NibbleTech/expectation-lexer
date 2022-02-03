@@ -27,16 +27,15 @@ class ExpectAnyResolver implements ExpectationResolver
             throw WrongExpectOption::shouldBe($expectOption, ExpectAny::class);
         }
 
-        // Discover any
-
-
         foreach ($expectOption->getExpectedNextOptions() as $expectedNextOption) {
+            $bookmark = $lexerProgress->bookmark();
             try {
                 $this->resolveExpectOption->resolve(
                     $lexerProgress,
                     $expectedNextOption,
                 );
             } catch (TokenNotFound) {
+                $lexerProgress->rewind($bookmark);
                 continue;
             }
         }
