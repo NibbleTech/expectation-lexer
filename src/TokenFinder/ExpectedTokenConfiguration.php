@@ -9,54 +9,36 @@ use NibbleTech\ExpectationLexer\Tokens\Token;
 
 class ExpectedTokenConfiguration
 {
-    private \NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder $expectedTokenOrder;
+    private ExpectOrder $expectedTokenOrder;
     /**
      * @var Token[]
      */
     private array $fillerTokens = [];
-    /**
-     * @var Token[]
-     */
-    private array $ignoredTokens = [];
 
     final private function __construct()
     {
     }
 
     /**
-     * @param Token[]     $fillerTokens
-     * @param Token[]     $ignoredTokens
+     * @param Token[] $fillerTokens
      *
      */
     public static function create(
         ExpectOrder $expectedTokenOrder,
-        array $fillerTokens = [],
-        array $ignoredTokens = []
+        array $fillerTokens = []
     ): ExpectedTokenConfiguration {
         $self = new static();
 
         $self->expectedTokenOrder = $expectedTokenOrder;
-        $self->fillerTokens = $fillerTokens;
-        $self->ignoredTokens = $ignoredTokens;
+        $self->fillerTokens       = $fillerTokens;
 
         return $self;
     }
 
     public function isIgnoredToken(Token $token): bool
     {
-        foreach ($this->ignoredTokens as $ignoredToken) {
+        foreach ($this->fillerTokens as $ignoredToken) {
             if ($token instanceof $ignoredToken) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public function isFillerToken(Token $token): bool
-    {
-        foreach ($this->fillerTokens as $fillerToken) {
-            if ($token instanceof $fillerToken) {
                 return true;
             }
         }

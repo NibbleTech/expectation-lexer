@@ -4,21 +4,22 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\TokenFinder;
 
+use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
 use NibbleTech\ExpectationLexer\Exceptions\ExpectedNotFound;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
+use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
-use NibbleTech\ExpectationLexer\TokenFinder\Lexer;
 use PHPUnit\Framework\TestCase;
 
 class LexerTest extends TestCase
 {
 
     /**
-     * @covers \Lexer\Lexer\TokenFinder\Lexer::lex
+     * @covers Lexer::lex
      */
     public function test_it_throws_exception_when_cant_find_expected_token()
     {
@@ -38,6 +39,33 @@ class LexerTest extends TestCase
         );
 
         self::expectException(TokenNotFound::class);
+
+        $tokenFinder->lex($example);
+    }
+
+    /**
+     * @covers Lexer::lex
+     */
+    public function test_it_throws_when_still_content_leftover(): void
+    {
+        $example = StringContent::with("abcd");
+
+        $config = ExpectedTokenConfiguration::create(
+            Expect::order(
+                [
+                    Expect::one(T_A::token()),
+                    Expect::one(T_B::token()),
+                    Expect::one(T_C::token()),
+                ]
+            )
+        );
+
+        $tokenFinder = new Lexer(
+            $config,
+            new ResolveExpectOption()
+        );
+
+        self::expectException(ContentStillLeftToParse::class);
 
         $tokenFinder->lex($example);
     }

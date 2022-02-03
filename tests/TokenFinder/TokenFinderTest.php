@@ -7,6 +7,7 @@ namespace NibbleTech\ExpectationLexer\TokenFinder;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use NibbleTech\ExpectationLexer\TokenFinder\TokenFinder;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use NibbleTech\ExpectationLexer\Tokens\UnclassifiedToken;
@@ -35,7 +36,14 @@ class TokenFinderTest extends TestCase
             Regex::create()->literal('a')->getRegex()
         );
 
-        $lexerProgress = LexerProgress::new(StringContent::with('abc'));
+        $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                    Expect::one($token),
+                ])
+            ),
+            StringContent::with('abc')
+        );
 
         $foundToken = $this->tokenFinder->findToken(
             $lexerProgress,
@@ -61,7 +69,14 @@ class TokenFinderTest extends TestCase
 
         self::expectException(TokenNotFound::class);
 
-        $lexerProgress = LexerProgress::new(StringContent::with('abc'));
+        $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                    Expect::one($token),
+                ])
+            ),
+            StringContent::with('abc')
+        );
 
         $this->tokenFinder->findToken(
             $lexerProgress,

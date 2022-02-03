@@ -10,6 +10,7 @@ use NibbleTech\ExpectationLexer\LexerResult\Events\LexerEvent;
 use NibbleTech\ExpectationLexer\LexerResult\Events\Rewound;
 use NibbleTech\ExpectationLexer\LexerResult\Events\TokenFound;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use Ramsey\Uuid\Uuid;
 use ReflectionClass;
@@ -32,6 +33,7 @@ class LexerProgress
     private LexerProgressBookmarkCollection $bookmarks;
 
     final private function __construct(
+        private ExpectedTokenConfiguration $configuration,
         StringContent $content
     ) {
         $this->bookmarks = new LexerProgressBookmarkCollection();
@@ -43,11 +45,18 @@ class LexerProgress
     }
 
     public static function new(
+        ExpectedTokenConfiguration $configuration,
         StringContent $content
     ): LexerProgress {
         return new self(
+            $configuration,
             $content
         );
+    }
+
+    public function getConfiguration(): ExpectedTokenConfiguration
+    {
+        return $this->configuration;
     }
 
     /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\TokenFinder;
 
+use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
@@ -18,15 +19,23 @@ class Lexer
 
     public function lex(StringContent $content): LexerProgress
     {
-        $lexerResult = LexerProgress::new(
+        $lexerProgress = LexerProgress::new(
+            $this->config,
             $content
         );
 
         $this->resolver->resolve(
-            $lexerResult,
+            $lexerProgress,
             $this->config->getExpectedTokenOrder(),
         );
 
-        return $lexerResult;
+        /**
+         * Done parsing, if theres content left over, thats not right.
+         */
+        if ($lexerProgress->getContentLookahead() !== '') {
+            throw ContentStillLeftToParse::withRemaining($lexerProgress->getContentLookahead());
+        }
+
+        return $lexerProgress;
     }
 }

@@ -10,6 +10,8 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_D;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use PHPUnit\Framework\TestCase;
 
 class LexerProgressTest extends TestCase
@@ -21,6 +23,10 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('test');
         $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                ])
+            ),
             $content
         );
 
@@ -34,6 +40,10 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('abc');
         $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                ])
+            ),
             $content
         );
 
@@ -69,6 +79,10 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('abcd');
         $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                ])
+            ),
             $content
         );
 
