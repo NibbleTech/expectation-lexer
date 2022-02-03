@@ -17,7 +17,7 @@
         "lucleroy/php-regex": "dev-patch-1",
         "spatie/regex": "^1.4",
         "nette/php-generator": "^3.5",
-        "ramsey/uuid": "^4.1"
+        "ramsey/uuid": "^4.2"
     },
     "require-dev": {
         "vimeo/psalm": "^4.1",
