@@ -10,7 +10,7 @@ class ExpectOne implements ExpectOption
 {
     use RepeatingTrait;
 
-    private \NibbleTech\ExpectationLexer\Tokens\Token $token;
+    private Token $token;
 
     final private function __construct()
     {
