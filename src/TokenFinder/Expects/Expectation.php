@@ -23,16 +23,9 @@ class Expectation
         return $this->expectOption;
     }
 
-    public function isRepeating(): bool
+    public function repeats(): bool
     {
         return $this->repeating;
-    }
-
-    public function repeats(): self
-    {
-        $this->repeating = true;
-
-        return $this;
     }
 
     public function isOptional(): bool
@@ -52,12 +45,21 @@ class Expectation
         return $this->minOccurances;
     }
 
-    public function setMinOccurances(int $minOccurances): void
+    public function repeatsAtLeast(int $minOccurances): self
     {
         if ($minOccurances <= 0) {
             throw new InvalidArgumentException('$minOccurances must be a positive integer');
         }
+        $this->repeating = true;
         $this->minOccurances = $minOccurances;
+        /**
+         * Dont allow max occurrences to conflict
+         */
+        if ($this->maxOccurances < $minOccurances) {
+            $this->maxOccurances = $minOccurances;
+        }
+
+        return $this;
     }
 
     public function getMaxOccurances(): int
@@ -65,11 +67,20 @@ class Expectation
         return $this->maxOccurances;
     }
 
-    public function setMaxOccurances(int $maxOccurances): void
+    public function repeatsAtMost(int $maxOccurances): self
     {
         if ($maxOccurances <= 0) {
             throw new InvalidArgumentException('$maxOccurances must be a positive integer');
         }
+        $this->repeating = true;
         $this->maxOccurances = $maxOccurances;
+        /**
+         * Dont allow min occurrences to conflict
+         */
+        if ($this->minOccurances > $maxOccurances) {
+            $this->minOccurances = $maxOccurances;
+        }
+
+        return $this;
     }
 }

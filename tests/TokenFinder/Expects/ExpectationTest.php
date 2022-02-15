@@ -22,7 +22,7 @@ class ExpectationTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
 
-        $expectation->setMaxOccurances(-1);
+        $expectation->repeatsAtMost(-1);
     }
     /**
      * @covers
@@ -34,6 +34,6 @@ class ExpectationTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
 
-        $expectation->setMinOccurances(-1);
+        $expectation->repeatsAtLeast(-1);
     }
 }
