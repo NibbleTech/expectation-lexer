@@ -12,6 +12,7 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_D;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
+use NibbleTech\ExpectationLexer\Tokens\T_WhitespaceOrTab;
 use PHPUnit\Framework\TestCase;
 
 class LexerProgressTest extends TestCase
@@ -130,6 +131,49 @@ class LexerProgressTest extends TestCase
         self::assertEquals(
             2,
             $lexerProgress->getContentCursorPosition()
+        );
+    }
+
+    /**
+     * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::getTokensWithoutFillerTokens
+     */
+    public function test_it_gets_tokens_without_filler_tokens()
+    {
+        $content       = StringContent::with('a b c');
+        $lexerProgress = LexerProgress::new(
+            ExpectedTokenConfiguration::create(
+                Expect::order([
+                ]),
+                [
+                    T_WhitespaceOrTab::token(),
+                ]
+            ),
+            $content
+        );
+
+        $lexerProgress->addFoundToken(
+            T_A::fromLexeme('a')
+        );
+        $lexerProgress->addFoundToken(
+            T_WhitespaceOrTab::fromLexeme(' ')
+        );
+        $lexerProgress->addFoundToken(
+            T_B::fromLexeme('b')
+        );
+        $lexerProgress->addFoundToken(
+            T_WhitespaceOrTab::fromLexeme(' ')
+        );
+        $lexerProgress->addFoundToken(
+            T_C::fromLexeme('c')
+        );
+
+        self::assertEquals(
+            [
+                T_A::fromLexeme('a'),
+                T_B::fromLexeme('b'),
+                T_C::fromLexeme('c')
+            ],
+            $lexerProgress->getTokensWithoutFillerTokens(),
         );
     }
 }

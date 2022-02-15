@@ -67,6 +67,28 @@ class LexerProgress
         return $this->tokens;
     }
 
+    /**
+     * @return Token[]
+     */
+    public function getTokensWithoutFillerTokens(): array
+    {
+        $fillerTokenClasses = array_map(
+            function ($item) {
+                return $item::class;
+            },
+            $this->configuration->getFillerTokens(),
+        );
+
+        $goodTokens = array_filter(
+            $this->tokens,
+            function ($item) use ($fillerTokenClasses) {
+                return !in_array($item::class, $fillerTokenClasses);
+            }
+        );
+
+        return array_values($goodTokens);
+    }
+
     public function getContent(): StringContent
     {
         return $this->content;
