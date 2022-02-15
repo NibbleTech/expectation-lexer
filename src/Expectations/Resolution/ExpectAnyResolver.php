@@ -7,6 +7,7 @@ namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
@@ -22,6 +23,7 @@ class ExpectAnyResolver implements ExpectationResolver
 
     public function resolve(
         LexerProgress $lexerProgress,
+        ExpectedTokenConfiguration $config,
         Expectation $expectation
     ): void {
         $expectOption = $expectation->getExpectOption();
@@ -35,6 +37,7 @@ class ExpectAnyResolver implements ExpectationResolver
             try {
                 $this->resolveExpectOption->resolve(
                     $lexerProgress,
+                    $config,
                     $expectedNextOption,
                 );
             } catch (TokenNotFound) {

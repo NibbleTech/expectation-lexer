@@ -41,9 +41,6 @@ class ExpectOneResolverTest extends TestCase
     public function test_it_handles_filler_tokens()
     {
         $config = ExpectedTokenConfiguration::create(
-            Expect::order([
-                Expect::one(T_A::token()),
-            ]),
             [
                 T_WhitespaceOrTab::token(),
             ]
@@ -53,12 +50,12 @@ class ExpectOneResolverTest extends TestCase
         $content = StringContent::with("\t\t  a");
 
         $lexerProgress = LexerProgress::new(
-            $config,
             $content
         );
 
         AssertTokens::assertTokens(
             $lexerProgress,
+            $config,
             new ExpectOneResolver(),
             Expect::one(T_A::token()),
             [

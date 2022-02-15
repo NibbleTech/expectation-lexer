@@ -6,6 +6,7 @@ namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
@@ -19,7 +20,8 @@ use RuntimeException;
 class ResolveExpectOption
 {
     public function resolve(
-        LexerProgress $lexerResult,
+        LexerProgress $lexerProgress,
+        ExpectedTokenConfiguration $config,
         Expectation $expectation
     ): void {
         $resolver = $this->getResolver($expectation->getExpectOption());
@@ -29,7 +31,8 @@ class ResolveExpectOption
         while ($foundCounter < $expectation->getMaxOccurances()) {
             try {
                 $resolver->resolve(
-                    $lexerResult,
+                    $lexerProgress,
+                    $config,
                     $expectation
                 );
             } catch (TokenNotFound $e) {

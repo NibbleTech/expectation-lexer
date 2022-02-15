@@ -22,13 +22,9 @@ class ResolveExpectOptionTest extends TestCase
      */
     public function test_it_ignores_optional_tokens_when_not_found()
     {
+        $config = ExpectedTokenConfiguration::create();
+
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                    Expect::one(T_A::token())->optional(),
-                    Expect::one(T_B::token()),
-                ])
-            ),
             StringContent::with('b')
         );
 
@@ -36,6 +32,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            $config,
             Expect::one(T_A::token())->optional()
         );
 
@@ -48,11 +45,6 @@ class ResolveExpectOptionTest extends TestCase
     public function test_it_ignores_optional_tokens_in_an_order()
     {
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                    Expect::one(T_B::token()),
-                ])
-            ),
             StringContent::with('b')
         );
 
@@ -60,6 +52,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            ExpectedTokenConfiguration::create(),
             Expect::order([
                 Expect::one(T_A::token())->optional(),
                 Expect::one(T_B::token()),
@@ -80,10 +73,6 @@ class ResolveExpectOptionTest extends TestCase
     public function test_it_supports_repeating_tokens_with_minimum()
     {
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             StringContent::with('bbb')
         );
 
@@ -91,6 +80,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            ExpectedTokenConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtLeast(3),
         );
 
@@ -110,10 +100,6 @@ class ResolveExpectOptionTest extends TestCase
     public function test_it_throws_when_repeating_token_is_less_than_minimum()
     {
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             StringContent::with('b')
         );
 
@@ -125,9 +111,9 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            ExpectedTokenConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtLeast(3),
         );
-
     }
 
     /**
@@ -136,10 +122,6 @@ class ResolveExpectOptionTest extends TestCase
     public function test_it_supports_repeating_tokens_with_maximum()
     {
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             StringContent::with('bbb')
         );
 
@@ -147,6 +129,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            ExpectedTokenConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtMost(3),
         );
 
@@ -166,10 +149,6 @@ class ResolveExpectOptionTest extends TestCase
     public function test_it_throws_when_repeating_token_is_more_than_maximum()
     {
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             StringContent::with('bbbb')
         );
 
@@ -181,6 +160,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
+            ExpectedTokenConfiguration::create(),
             Expect::order([
                 Expect::one(T_B::token())->repeatsAtMost(3),
                 Expect::one(T_A::token()),

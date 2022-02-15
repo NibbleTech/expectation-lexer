@@ -37,11 +37,6 @@ class TokenFinderTest extends TestCase
         );
 
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                    Expect::one($token),
-                ])
-            ),
             StringContent::with('abc')
         );
 
@@ -70,11 +65,6 @@ class TokenFinderTest extends TestCase
         self::expectException(TokenNotFound::class);
 
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                    Expect::one($token),
-                ])
-            ),
             StringContent::with('abc')
         );
 

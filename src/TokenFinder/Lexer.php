@@ -18,16 +18,18 @@ class Lexer
     ) {
     }
 
-    public function lex(StringContent $content): LexerProgress
-    {
+    public function lex(
+        Expectation $expectation,
+        StringContent $content
+    ): LexerProgress {
         $lexerProgress = LexerProgress::new(
-            $this->config,
             $content
         );
 
         $this->resolver->resolve(
             $lexerProgress,
-            $this->config->getExpectation(),
+            $this->config,
+            $expectation,
         );
 
         /**

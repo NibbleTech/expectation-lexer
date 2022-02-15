@@ -33,7 +33,6 @@ class LexerProgress
     private LexerProgressBookmarkCollection $bookmarks;
 
     final private function __construct(
-        private ExpectedTokenConfiguration $configuration,
         StringContent $content
     ) {
         $this->bookmarks = new LexerProgressBookmarkCollection();
@@ -45,18 +44,11 @@ class LexerProgress
     }
 
     public static function new(
-        ExpectedTokenConfiguration $configuration,
         StringContent $content
     ): LexerProgress {
         return new self(
-            $configuration,
             $content
         );
-    }
-
-    public function getConfiguration(): ExpectedTokenConfiguration
-    {
-        return $this->configuration;
     }
 
     /**
@@ -68,15 +60,18 @@ class LexerProgress
     }
 
     /**
+     * @param Token[] $fillerTokens
+     *
      * @return Token[]
      */
-    public function getTokensWithoutFillerTokens(): array
-    {
+    public function getTokensWithoutFillerTokens(
+        array $fillerTokens
+    ): array {
         $fillerTokenClasses = array_map(
             function ($item) {
                 return $item::class;
             },
-            $this->configuration->getFillerTokens(),
+            $fillerTokens,
         );
 
         $goodTokens = array_filter(

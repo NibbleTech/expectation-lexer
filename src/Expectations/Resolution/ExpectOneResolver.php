@@ -7,6 +7,7 @@ namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
@@ -23,6 +24,7 @@ class ExpectOneResolver implements ExpectationResolver
 
     public function resolve(
         LexerProgress $lexerProgress,
+        ExpectedTokenConfiguration $config,
         Expectation $expectation
     ): void {
         $expectOption = $expectation->getExpectOption();
@@ -31,7 +33,10 @@ class ExpectOneResolver implements ExpectationResolver
             throw WrongExpectOption::shouldBe($expectOption, ExpectOne::class);
         }
         
-        $this->findAnyFillerTokens($lexerProgress);
+        $this->findAnyFillerTokens(
+            $lexerProgress,
+            $config
+        );
 
         $foundToken = $this->tokenFinder->findToken(
             $lexerProgress,
@@ -42,10 +47,9 @@ class ExpectOneResolver implements ExpectationResolver
     }
 
     private function findAnyFillerTokens(
-        LexerProgress $lexerProgress
+        LexerProgress $lexerProgress,
+        ExpectedTokenConfiguration $config
     ): void {
-        $config = $lexerProgress->getConfiguration();
-
         $fillerTokens = $config->getFillerTokens();
 
         foreach ($fillerTokens as $fillerToken) {
@@ -60,7 +64,10 @@ class ExpectOneResolver implements ExpectationResolver
                  * Filler token found so recurse into finding more filler tokens
                  * as the next one might be yet another filler token
                  */
-                $this->findAnyFillerTokens($lexerProgress);
+                $this->findAnyFillerTokens(
+                    $lexerProgress,
+                    $config
+                );
 
                 /**
                  * Once the recursion passes we can just instantly return because we know there should be

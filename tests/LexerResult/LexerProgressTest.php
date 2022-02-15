@@ -24,10 +24,6 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('test');
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             $content
         );
 
@@ -41,10 +37,6 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('abc');
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             $content
         );
 
@@ -80,10 +72,6 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('abcd');
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ])
-            ),
             $content
         );
 
@@ -141,13 +129,6 @@ class LexerProgressTest extends TestCase
     {
         $content       = StringContent::with('a b c');
         $lexerProgress = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                ]),
-                [
-                    T_WhitespaceOrTab::token(),
-                ]
-            ),
             $content
         );
 
@@ -173,7 +154,9 @@ class LexerProgressTest extends TestCase
                 T_B::fromLexeme('b'),
                 T_C::fromLexeme('c')
             ],
-            $lexerProgress->getTokensWithoutFillerTokens(),
+            $lexerProgress->getTokensWithoutFillerTokens([
+                T_WhitespaceOrTab::token()
+            ]),
         );
     }
 }

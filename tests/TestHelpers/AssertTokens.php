@@ -27,16 +27,12 @@ class AssertTokens
         array $tokens
     ): void {
         $lexerResult = LexerProgress::new(
-            ExpectedTokenConfiguration::create(
-                Expect::order([
-                    $expectation
-                ])
-            ),
             $content
         );
 
         self::assertTokens(
             $lexerResult,
+            ExpectedTokenConfiguration::create(),
             $resolver,
             $expectation,
             $tokens
@@ -45,12 +41,14 @@ class AssertTokens
 
     public static function assertTokens(
         LexerProgress $lexerProgress,
+        ExpectedTokenConfiguration $config,
         ExpectationResolver $resolver,
         Expectation $expectation,
         array $tokens
     ): void {
         $resolver->resolve(
             $lexerProgress,
+            $config,
             $expectation
         );
 

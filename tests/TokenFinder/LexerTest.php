@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\TokenFinder;
 
 use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
-use NibbleTech\ExpectationLexer\Exceptions\ExpectedNotFound;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
@@ -25,13 +24,7 @@ class LexerTest extends TestCase
     {
         $example = StringContent::with("B");
 
-        $config = ExpectedTokenConfiguration::create(
-            Expect::order(
-                [
-                    Expect::one(T_A::token()),
-                ]
-            )
-        );
+        $config = ExpectedTokenConfiguration::create();
 
         $tokenFinder = new Lexer(
             $config,
@@ -40,7 +33,15 @@ class LexerTest extends TestCase
 
         self::expectException(TokenNotFound::class);
 
-        $tokenFinder->lex($example);
+        $tokenFinder->lex(
+
+            Expect::order(
+                [
+                    Expect::one(T_A::token()),
+                ]
+            ),
+            $example
+        );
     }
 
     /**
@@ -50,15 +51,7 @@ class LexerTest extends TestCase
     {
         $example = StringContent::with("abcd");
 
-        $config = ExpectedTokenConfiguration::create(
-            Expect::order(
-                [
-                    Expect::one(T_A::token()),
-                    Expect::one(T_B::token()),
-                    Expect::one(T_C::token()),
-                ]
-            )
-        );
+        $config = ExpectedTokenConfiguration::create();
 
         $tokenFinder = new Lexer(
             $config,
@@ -67,21 +60,22 @@ class LexerTest extends TestCase
 
         self::expectException(ContentStillLeftToParse::class);
 
-        $tokenFinder->lex($example);
+        $tokenFinder->lex(
+            Expect::order(
+                [
+                    Expect::one(T_A::token()),
+                    Expect::one(T_B::token()),
+                    Expect::one(T_C::token()),
+                ]
+            ),
+            $example
+        );
     }
 
 
     public function notyet_test_it_finds_literal_tokens()
     {
-        $config = ExpectedTokenConfiguration::create(
-            Expect::order(
-                [
-                    Expect::one(T_Literal::of('foo')),
-                    Expect::one(T_Literal::of('bar')),
-                    Expect::one(T_Literal::of('baz')),
-                ]
-            ),
-        );
+        $config = ExpectedTokenConfiguration::create();
 
         $text = "foobarbaz";
 
