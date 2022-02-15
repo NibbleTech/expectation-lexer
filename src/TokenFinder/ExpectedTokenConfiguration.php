@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\TokenFinder;
 
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 
 class ExpectedTokenConfiguration
 {
-    private ExpectOrder $expectedTokenOrder;
+    private Expectation $expectation;
     /**
      * @var Token[]
      */
@@ -24,13 +25,13 @@ class ExpectedTokenConfiguration
      *
      */
     public static function create(
-        ExpectOrder $expectedTokenOrder,
+        Expectation $expectation,
         array $fillerTokens = []
     ): ExpectedTokenConfiguration {
         $self = new static();
 
-        $self->expectedTokenOrder = $expectedTokenOrder;
-        $self->fillerTokens       = $fillerTokens;
+        $self->expectation  = $expectation;
+        $self->fillerTokens = $fillerTokens;
 
         return $self;
     }
@@ -54,8 +55,8 @@ class ExpectedTokenConfiguration
         return $this->fillerTokens;
     }
 
-    public function getExpectedTokenOrder(): ExpectOrder
+    public function getExpectation(): Expectation
     {
-        return $this->expectedTokenOrder;
+        return $this->expectation;
     }
 }

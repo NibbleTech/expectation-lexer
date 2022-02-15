@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
-use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 
 interface ExpectationResolver
 {
     public function resolve(
         LexerProgress $lexerProgress,
-        ExpectOption $expectOption
+        Expectation $expectation
     ): void;
 }

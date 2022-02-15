@@ -9,6 +9,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use PHPUnit\Framework\TestCase;
@@ -16,19 +17,19 @@ use PHPUnit\Framework\TestCase;
 class AssertTokens
 {
     /**
-     * @param ExpectOption $expectOption
+     * @param Expectation $expectation
      * @param Token[]      $tokens
      */
     public static function assertResolved(
         ExpectationResolver $resolver,
-        ExpectOption $expectOption,
+        Expectation $expectation,
         StringContent $content,
         array $tokens
     ): void {
         $lexerResult = LexerProgress::new(
             ExpectedTokenConfiguration::create(
                 Expect::order([
-                    $expectOption
+                    $expectation
                 ])
             ),
             $content
@@ -37,7 +38,7 @@ class AssertTokens
         self::assertTokens(
             $lexerResult,
             $resolver,
-            $expectOption,
+            $expectation,
             $tokens
         );
     }
@@ -45,12 +46,12 @@ class AssertTokens
     public static function assertTokens(
         LexerProgress $lexerProgress,
         ExpectationResolver $resolver,
-        ExpectOption $expectOption,
+        Expectation $expectation,
         array $tokens
     ): void {
         $resolver->resolve(
             $lexerProgress,
-            $expectOption
+            $expectation
         );
 
         TestCase::assertEquals(

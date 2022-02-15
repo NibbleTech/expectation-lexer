@@ -8,6 +8,7 @@ use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 
 class Lexer
 {
@@ -26,7 +27,7 @@ class Lexer
 
         $this->resolver->resolve(
             $lexerProgress,
-            $this->config->getExpectedTokenOrder(),
+            $this->config->getExpectation(),
         );
 
         /**

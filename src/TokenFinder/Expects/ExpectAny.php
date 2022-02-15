@@ -8,10 +8,8 @@ use InvalidArgumentException;
 
 class ExpectAny implements ExpectOption
 {
-    use RepeatingTrait;
-
     /**
-     * @var ExpectOption[]
+     * @var Expectation[]
      */
     private array $expects;
 
@@ -20,33 +18,29 @@ class ExpectAny implements ExpectOption
     }
 
     /**
-     * @param ExpectOption[] $expects
+     * @param Expectation[] $expectations
      */
-    public static function of(array $expects): ExpectAny
+    public static function of(array $expectations): ExpectAny
     {
         $self = new static();
 
-        foreach ($expects as $expect) {
+        foreach ($expectations as $expectation) {
             /** @psalm-suppress DocblockTypeContradiction */
-            if (!$expect instanceof ExpectOption) {
-                throw new InvalidArgumentException("Given ExpectOption is not an instance of " . ExpectOption::class);
+            if (!$expectation instanceof Expectation) {
+                throw new InvalidArgumentException("Given ExpectOption is not an instance of " . Expectation::class);
             }
         }
 
-        $self->expects = $expects;
+        $self->expects = $expectations;
 
         return $self;
     }
 
+    /**
+     * @return Expectation[]
+     */
     public function getExpectedNextOptions(): array
     {
         return $this->expects;
-    }
-
-    public function getOptionsToFind(): array
-    {
-        return [
-            $this
-        ];
     }
 }

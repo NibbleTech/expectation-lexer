@@ -15,26 +15,32 @@ class Expect
     {
     }
 
-    public static function one(Token $token): ExpectOne
+    public static function one(Token $token): Expectation
     {
-        return ExpectOne::of($token);
-    }
-
-    /**
-     * @param ExpectOption[] $expectOptions
-     */
-    public static function anyOf(array $expectOptions): ExpectAny
-    {
-        return ExpectAny::of(
-            $expectOptions
+        return new Expectation(
+            ExpectOne::of($token)
         );
     }
 
     /**
-     * @param ExpectOption[] $expects
+     * @param Expectation[] $expectOptions
      */
-    public static function order(array $expects): ExpectOrder
+    public static function anyOf(array $expectOptions): Expectation
     {
-        return ExpectOrder::with($expects);
+        return new Expectation(
+            ExpectAny::of(
+                $expectOptions
+            )
+        );
+    }
+
+    /**
+     * @param Expectation[] $expects
+     */
+    public static function order(array $expects): Expectation
+    {
+        return new Expectation(
+            ExpectOrder::with($expects)
+        );
     }
 }

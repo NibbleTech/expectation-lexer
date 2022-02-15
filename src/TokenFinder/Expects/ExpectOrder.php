@@ -8,18 +8,16 @@ use InvalidArgumentException;
 
 class ExpectOrder implements ExpectOption
 {
-    use RepeatingTrait;
-
     /**
-     * @var ExpectOption
+     * @var Expectation
      */
     private $firstExpects;
     /**
-     * @var ExpectOption[]
+     * @var Expectation[]
      */
     private $subsequentExpects = [];
     /**
-     * @var ExpectOption[]
+     * @var Expectation[]
      */
     private $allExpects = [];
 
@@ -28,23 +26,23 @@ class ExpectOrder implements ExpectOption
     }
 
     /**
-     * @param ExpectOption[] $expectOptions
+     * @param Expectation[] $expectations
      */
-    public static function with(array $expectOptions): ExpectOrder
+    public static function with(array $expectations): ExpectOrder
     {
-        foreach ($expectOptions as $expectOption) {
+        foreach ($expectations as $expectation) {
             /** @psalm-suppress DocblockTypeContradiction */
-            if (!$expectOption instanceof ExpectOption) {
-                throw new InvalidArgumentException("Given ExpectOption is not an instance of " . ExpectOption::class);
+            if (!$expectation instanceof Expectation) {
+                throw new InvalidArgumentException("Given ExpectOption is not an instance of " . Expectation::class);
             }
         }
 
         $self = new static();
-        $self->allExpects = $expectOptions;
+        $self->allExpects = $expectations;
 
-        $first = array_shift($expectOptions);
+        $first = array_shift($expectations);
         $self->firstExpects = $first;
-        $self->subsequentExpects = $expectOptions;
+        $self->subsequentExpects = $expectations;
 
         return $self;
     }
@@ -56,13 +54,8 @@ class ExpectOrder implements ExpectOption
         ];
     }
 
-    public function getOptionsToFind(): array
-    {
-        return $this->allExpects;
-    }
-
     /**
-     * @return ExpectOption[]
+     * @return Expectation[]
      */
     public function getSubsequentTokens(): array
     {
@@ -70,7 +63,7 @@ class ExpectOrder implements ExpectOption
     }
 
     /**
-     * @return ExpectOption[]
+     * @return Expectation[]
      */
     public function getAllExpects(): array
     {

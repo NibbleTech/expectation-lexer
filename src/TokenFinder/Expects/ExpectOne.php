@@ -8,8 +8,6 @@ use NibbleTech\ExpectationLexer\Tokens\Token;
 
 class ExpectOne implements ExpectOption
 {
-    use RepeatingTrait;
-
     private Token $token;
 
     final private function __construct()
@@ -23,20 +21,6 @@ class ExpectOne implements ExpectOption
         $self->token = $token;
 
         return $self;
-    }
-
-    public function getExpectedNextOptions(): array
-    {
-        return [
-            $this
-        ];
-    }
-
-    public function getOptionsToFind(): array
-    {
-        return [
-            $this
-        ];
     }
 
     public function getToken(): Token
