@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
+use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
@@ -22,11 +23,17 @@ class ResolveExpectOption
         Expectation $expectation
     ): void {
         $resolver = $this->getResolver($expectation->getExpectOption());
-
-        $resolver->resolve(
-            $lexerResult,
-            $expectation
-        );
+        
+        try {
+            $resolver->resolve(
+                $lexerResult,
+                $expectation
+            );
+        } catch (TokenNotFound $e) {
+            if ($expectation->isOptional() === false) {
+                throw $e;
+            }
+        }
 
         // repeating stuff could happen here, but would require the discovery stuff maybe?
         // need non cursor altering matching. but that could still just be within the resolve
