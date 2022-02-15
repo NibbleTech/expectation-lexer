@@ -30,7 +30,7 @@ class TokenFinderTest extends TestCase
     /**
      * @covers \Lexer\Lexer\TokenFinder\TokenFinder::findToken
      */
-    public function test_it_finds_token()
+    public function test_it_finds_token(): void
     {
         $token = UnclassifiedToken::withRegex(
             Regex::create()->literal('a')->getRegex()
@@ -56,7 +56,7 @@ class TokenFinderTest extends TestCase
     /**
      * @covers \Lexer\Lexer\TokenFinder\TokenFinder::findToken
      */
-    public function test_it_throws_when_failed_to_find_token()
+    public function test_it_throws_when_failed_to_find_token(): void
     {
         $token = UnclassifiedToken::withRegex(
             Regex::create()->literal('z')->getRegex()

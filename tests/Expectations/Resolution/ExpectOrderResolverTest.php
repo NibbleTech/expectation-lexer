@@ -19,7 +19,7 @@ class ExpectOrderResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
      */
-    public function test_order_of_expect_ones_resolves()
+    public function test_order_of_expect_ones_resolves(): void
     {
         $expectOption = Expect::order([
             Expect::one(T_A::token()),
@@ -50,7 +50,7 @@ class ExpectOrderResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
      */
-    public function test_throws_on_incomplete_order()
+    public function test_throws_on_incomplete_order(): void
     {
         $expectOption = Expect::order([
             Expect::one(T_A::token()),
@@ -76,7 +76,7 @@ class ExpectOrderResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
      */
-    public function test_single_level_nested_any_of_resolves()
+    public function test_single_level_nested_any_of_resolves(): void
     {
         $expectOption = Expect::order([
             Expect::anyOf([
@@ -110,7 +110,7 @@ class ExpectOrderResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
      */
-    public function test_double_level_nested_any_of_resolves()
+    public function test_double_level_nested_any_of_resolves(): void
     {
         $expectOption = Expect::order([
             Expect::anyOf([
@@ -183,7 +183,7 @@ class ExpectOrderResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
      */
-    public function test_nested_orders_resolves()
+    public function test_nested_orders_resolves(): void
     {
         $expectOption = Expect::order([
             Expect::order([

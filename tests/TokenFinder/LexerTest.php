@@ -20,7 +20,7 @@ class LexerTest extends TestCase
     /**
      * @covers Lexer::lex
      */
-    public function test_it_throws_exception_when_cant_find_expected_token()
+    public function test_it_throws_exception_when_cant_find_expected_token(): void
     {
         $example = StringContent::with("B");
 

@@ -20,7 +20,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_ignores_optional_tokens_when_not_found()
+    public function test_it_ignores_optional_tokens_when_not_found(): void
     {
         $config = ExpectedTokenConfiguration::create();
 
@@ -42,7 +42,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_ignores_optional_tokens_in_an_order()
+    public function test_it_ignores_optional_tokens_in_an_order(): void
     {
         $lexerProgress = LexerProgress::new(
             StringContent::with('b')
@@ -70,7 +70,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_supports_repeating_tokens_with_minimum()
+    public function test_it_supports_repeating_tokens_with_minimum(): void
     {
         $lexerProgress = LexerProgress::new(
             StringContent::with('bbb')
@@ -97,7 +97,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_throws_when_repeating_token_is_less_than_minimum()
+    public function test_it_throws_when_repeating_token_is_less_than_minimum(): void
     {
         $lexerProgress = LexerProgress::new(
             StringContent::with('b')
@@ -119,7 +119,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_supports_repeating_tokens_with_maximum()
+    public function test_it_supports_repeating_tokens_with_maximum(): void
     {
         $lexerProgress = LexerProgress::new(
             StringContent::with('bbb')
@@ -146,7 +146,7 @@ class ResolveExpectOptionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
      */
-    public function test_it_throws_when_repeating_token_is_more_than_maximum()
+    public function test_it_throws_when_repeating_token_is_more_than_maximum(): void
     {
         $lexerProgress = LexerProgress::new(
             StringContent::with('bbbb')

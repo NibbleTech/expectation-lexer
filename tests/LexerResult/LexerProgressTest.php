@@ -20,7 +20,7 @@ class LexerProgressTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::new
      */
-    public function test_constructs()
+    public function test_constructs(): void
     {
         $content       = StringContent::with('test');
         $lexerProgress = LexerProgress::new(
@@ -33,7 +33,7 @@ class LexerProgressTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::addFoundToken
      */
-    public function test_can_add_found_tokens()
+    public function test_can_add_found_tokens(): void
     {
         $content       = StringContent::with('abc');
         $lexerProgress = LexerProgress::new(
@@ -68,7 +68,7 @@ class LexerProgressTest extends TestCase
     /**
      * @covers
      */
-    public function test_it_can_bookmark_and_rewind_progress()
+    public function test_it_can_bookmark_and_rewind_progress(): void
     {
         $content       = StringContent::with('abcd');
         $lexerProgress = LexerProgress::new(
@@ -125,7 +125,7 @@ class LexerProgressTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::getTokensWithoutFillerTokens
      */
-    public function test_it_gets_tokens_without_filler_tokens()
+    public function test_it_gets_tokens_without_filler_tokens(): void
     {
         $content       = StringContent::with('a b c');
         $lexerProgress = LexerProgress::new(

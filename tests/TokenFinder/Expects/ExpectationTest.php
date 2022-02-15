@@ -15,7 +15,7 @@ class ExpectationTest extends TestCase
     /**
      * @covers
      */
-    public function test_it_does_not_allow_invalid_max_occurances()
+    public function test_it_does_not_allow_invalid_max_occurances(): void
     {
         $expectOne = ExpectOne::of(T_A::token());
         $expectation = new Expectation($expectOne);
@@ -27,7 +27,7 @@ class ExpectationTest extends TestCase
     /**
      * @covers
      */
-    public function test_it_does_not_allow_invalid_min_occurances()
+    public function test_it_does_not_allow_invalid_min_occurances(): void
     {
         $expectOne = ExpectOne::of(T_A::token());
         $expectation = new Expectation($expectOne);

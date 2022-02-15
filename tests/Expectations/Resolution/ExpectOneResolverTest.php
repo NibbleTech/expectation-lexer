@@ -21,7 +21,7 @@ class ExpectOneResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOneResolver::resolve
      */
-    public function test_expect_one_resolves()
+    public function test_expect_one_resolves(): void
     {
         $expectOption = Expect::one(T_A::token());
 
@@ -38,7 +38,7 @@ class ExpectOneResolverTest extends TestCase
     /**
      * @covers
      */
-    public function test_it_handles_filler_tokens()
+    public function test_it_handles_filler_tokens(): void
     {
         $config = ExpectedTokenConfiguration::create(
             [

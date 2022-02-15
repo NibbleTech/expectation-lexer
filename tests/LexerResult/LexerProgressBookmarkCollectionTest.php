@@ -15,7 +15,7 @@ class LexerProgressBookmarkCollectionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgressBookmarkCollection::addBookmark
      */
-    public function test_it_cannot_add_bookmark_with_lower_token_count()
+    public function test_it_cannot_add_bookmark_with_lower_token_count(): void
     {
         $collection = new LexerProgressBookmarkCollection();
 
@@ -39,7 +39,7 @@ class LexerProgressBookmarkCollectionTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgressBookmarkCollection::rewindToBookmark
      */
-    public function test_it_can_rewind_to_bookmark()
+    public function test_it_can_rewind_to_bookmark(): void
     {
         $collection = new LexerProgressBookmarkCollection();
 

@@ -27,7 +27,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_any_of_export_one_resolves()
+    public function test_any_of_export_one_resolves(): void
     {
         $expectOption = Expect::anyOf([
             Expect::one(T_A::token()),
@@ -56,7 +56,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_nested_any_of_resolves()
+    public function test_nested_any_of_resolves(): void
     {
         $expectOption = Expect::anyOf([
             Expect::anyOf([
@@ -97,7 +97,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_double_nested_any_of_resolves()
+    public function test_double_nested_any_of_resolves(): void
     {
         $expectOption = Expect::anyOf([
             Expect::anyOf([
@@ -150,7 +150,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_any_of_orders()
+    public function test_any_of_orders(): void
     {
         $expectOption = Expect::anyOf([
             Expect::anyOf([
@@ -189,7 +189,7 @@ class ExpectAnyResolverTest extends TestCase
     /**
      * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
      */
-    public function test_any_of_orders_with_similar_beginnings()
+    public function test_any_of_orders_with_similar_beginnings(): void
     {
         $expectOption = Expect::anyOf([
             Expect::anyOf([
