@@ -70,49 +70,6 @@ class LexerTest extends TestCase
         $tokenFinder->lex($example);
     }
 
-    public function notyet_test_it_finds_token_x_times(): void
-    {
-        $config = ExpectedTokenConfiguration::create(
-            Expect::order(
-                [
-//                    Expect::one(T_Literal::of('foo'))->repeating(),
-                ]
-            ),
-        );
-
-//        syntax ideas
-        // 1
-        Expect::one(T_A::token())->nTimes(3);
-
-        // Idea here is the nTimes should apply to all kinds of configs. One token, orders, etc.
-        // So you could do:
-        Expect::order(/**/)->nTimes(3);
-
-        // There is the ->repeating() method already, maybe augment to set a min/max?
-        Expect::one(T_A::token())->repeating(/* min */ 2, /* max */ 10);
-
-        // For a more fluent interface, maybe it should be something like
-        Expect::one(T_A::token())->atLeast(3)->atMost(10);
-        Expect::one(T_A::token())->atLeast(3);
-        Expect::one(T_A::token())->atMost(3);
-        // Both being optional allowing the open endedness either way.
-        // No minimum = could not find it and move onto next token in order at any time
-        // No Maximum = will be allowed to continue finding it forever (maybe hardcode an upper limit to save from infinite loops)
-
-        // 2
-        Expect::n(T_A::token(), 3);
-
-    }
-
-    public function notyet_test_it_throws_on_token_over_x_times(): void
-    {
-
-    }
-
-    public function notyet_test_it_throws_on_token_under_x_times(): void
-    {
-
-    }
 
     public function notyet_test_it_finds_literal_tokens()
     {
