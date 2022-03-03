@@ -8,7 +8,6 @@ use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectationResolver;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
-use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 
 class Lexer

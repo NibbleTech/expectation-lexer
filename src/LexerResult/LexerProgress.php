@@ -10,7 +10,6 @@ use NibbleTech\ExpectationLexer\LexerResult\Events\LexerEvent;
 use NibbleTech\ExpectationLexer\LexerResult\Events\Rewound;
 use NibbleTech\ExpectationLexer\LexerResult\Events\TokenFound;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
-use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use Ramsey\Uuid\Uuid;
 use ReflectionClass;
