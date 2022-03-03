@@ -10,7 +10,6 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
-use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 
 class ExpectAnyResolver implements ExpectationResolver
 {

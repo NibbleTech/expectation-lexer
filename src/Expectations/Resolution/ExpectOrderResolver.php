@@ -8,7 +8,6 @@ use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
-use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
 
 class ExpectOrderResolver implements ExpectationResolver

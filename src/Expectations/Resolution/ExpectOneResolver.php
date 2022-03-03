@@ -10,7 +10,6 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
-use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use NibbleTech\ExpectationLexer\TokenFinder\TokenFinder;
 
 class ExpectOneResolver implements ExpectationResolver
@@ -32,7 +31,7 @@ class ExpectOneResolver implements ExpectationResolver
         if (!$expectOption instanceof ExpectOne) {
             throw WrongExpectOption::shouldBe($expectOption, ExpectOne::class);
         }
-        
+
         $this->findAnyFillerTokens(
             $lexerProgress,
             $config
@@ -78,7 +77,5 @@ class ExpectOneResolver implements ExpectationResolver
                 continue;
             }
         }
-
-
     }
 }
