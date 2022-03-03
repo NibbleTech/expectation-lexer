@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NibbleTech\ExpectationLexer\TokenFinder;
+namespace NibbleTech\ExpectationLexer;
 
 use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
@@ -11,6 +11,7 @@ use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
+use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use PHPUnit\Framework\TestCase;
 
