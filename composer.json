@@ -14,7 +14,7 @@
     },
     "require": {
         "php": "^8.1",
-        "spatie/regex": "^1.4",
+        "spatie/regex": "^3.1",
         "ramsey/uuid": "^4.2"
     },
     "require-dev": {
