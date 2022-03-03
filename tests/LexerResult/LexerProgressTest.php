@@ -10,7 +10,7 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_D;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use NibbleTech\ExpectationLexer\Tokens\T_WhitespaceOrTab;
 use PHPUnit\Framework\TestCase;

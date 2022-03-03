@@ -11,7 +11,7 @@ use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,7 @@ class LexerTest extends TestCase
     {
         $example = StringContent::with("B");
 
-        $config = ExpectedTokenConfiguration::create();
+        $config = LexerConfiguration::create();
 
         $tokenFinder = new Lexer(
             $config,
@@ -52,7 +52,7 @@ class LexerTest extends TestCase
     {
         $example = StringContent::with("abcd");
 
-        $config = ExpectedTokenConfiguration::create();
+        $config = LexerConfiguration::create();
 
         $tokenFinder = new Lexer(
             $config,

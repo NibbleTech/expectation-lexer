@@ -7,7 +7,7 @@ namespace NibbleTech\ExpectationLexer\TestHelpers;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectationResolver;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
@@ -32,7 +32,7 @@ class AssertTokens
 
         self::assertTokens(
             $lexerResult,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             $resolver,
             $expectation,
             $tokens
@@ -41,7 +41,7 @@ class AssertTokens
 
     public static function assertTokens(
         LexerProgress $lexerProgress,
-        ExpectedTokenConfiguration $config,
+        LexerConfiguration $config,
         ExpectationResolver $resolver,
         Expectation $expectation,
         array $tokens

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace NibbleTech\ExpectationLexer\TokenFinder;
+namespace NibbleTech\ExpectationLexer;
 
 use NibbleTech\ExpectationLexer\Tokens\Token;
 
-class ExpectedTokenConfiguration
+class LexerConfiguration
 {
     /**
      * @var Token[]
@@ -23,7 +23,7 @@ class ExpectedTokenConfiguration
      */
     public static function create(
         array $fillerTokens = []
-    ): ExpectedTokenConfiguration {
+    ): LexerConfiguration {
         $self = new static();
 
         $self->fillerTokens = $fillerTokens;

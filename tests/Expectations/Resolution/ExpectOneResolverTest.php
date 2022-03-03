@@ -9,7 +9,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\AssertTokens;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use NibbleTech\ExpectationLexer\Tokens\T_Tab;
 use NibbleTech\ExpectationLexer\Tokens\T_WhitespaceOrTab;
@@ -40,7 +40,7 @@ class ExpectOneResolverTest extends TestCase
      */
     public function test_it_handles_filler_tokens(): void
     {
-        $config = ExpectedTokenConfiguration::create(
+        $config = LexerConfiguration::create(
             [
                 T_WhitespaceOrTab::token(),
             ]

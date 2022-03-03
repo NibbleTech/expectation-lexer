@@ -10,7 +10,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
-use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
@@ -22,7 +22,7 @@ class ResolveExpectOptionTest extends TestCase
      */
     public function test_it_ignores_optional_tokens_when_not_found(): void
     {
-        $config = ExpectedTokenConfiguration::create();
+        $config = LexerConfiguration::create();
 
         $lexerProgress = LexerProgress::new(
             StringContent::with('b')
@@ -52,7 +52,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             Expect::order([
                 Expect::one(T_A::token())->optional(),
                 Expect::one(T_B::token()),
@@ -80,7 +80,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtLeast(3),
         );
 
@@ -111,7 +111,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtLeast(3),
         );
     }
@@ -129,7 +129,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             Expect::one(T_B::token())->repeatsAtMost(3),
         );
 
@@ -160,7 +160,7 @@ class ResolveExpectOptionTest extends TestCase
 
         $resolver->resolve(
             $lexerProgress,
-            ExpectedTokenConfiguration::create(),
+            LexerConfiguration::create(),
             Expect::order([
                 Expect::one(T_B::token())->repeatsAtMost(3),
                 Expect::one(T_A::token()),
