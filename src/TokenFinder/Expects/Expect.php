@@ -11,10 +11,6 @@ use NibbleTech\ExpectationLexer\Tokens\Token;
  */
 final class Expect
 {
-    final private function __construct()
-    {
-    }
-
     public static function one(Token $token): Expectation
     {
         return new Expectation(
