@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer;
 
 use NibbleTech\ExpectationLexer\Exceptions\ContentStillLeftToParse;
-use NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption;
+use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectationResolver;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\ExpectedTokenConfiguration;
@@ -15,7 +15,7 @@ class Lexer
 {
     public function __construct(
         private readonly ExpectedTokenConfiguration $config,
-        private readonly ResolveExpectOption $resolver
+        private readonly ExpectationResolver $resolver
     ) {
     }
 

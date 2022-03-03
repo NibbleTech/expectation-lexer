@@ -17,7 +17,7 @@ use RuntimeException;
 /**
  * Take the lexer result and the current ExpectOption,
  */
-class ResolveExpectOption
+class ResolveExpectOption implements ExpectationResolver
 {
     public function resolve(
         LexerProgress $lexerProgress,
