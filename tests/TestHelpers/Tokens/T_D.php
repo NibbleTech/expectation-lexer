@@ -10,10 +10,6 @@ class T_D extends AbstractToken
 {
     public function getRegex(): string
     {
-        return \LucLeroy\Regex\Regex::create()
-            ->startOfString()
-            ->chars('d')
-            ->times(1)
-            ->getRegex();
+        return '/d/';
     }
 }
