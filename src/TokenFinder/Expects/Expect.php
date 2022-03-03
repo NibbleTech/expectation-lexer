@@ -9,7 +9,7 @@ use NibbleTech\ExpectationLexer\Tokens\Token;
 /**
  * Helper static factory of various ExpectOption types
  */
-class Expect
+final class Expect
 {
     final private function __construct()
     {

@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult;
 
 use RuntimeException;
 
-class LexerProgressBookmarkCollection
+final class LexerProgressBookmarkCollection
 {
     private int $highestTokenCount = 0;
     /**

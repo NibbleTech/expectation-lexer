@@ -10,7 +10,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 
-class Lexer
+final class Lexer
 {
     public function __construct(
         private readonly LexerConfiguration $config,

@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer;
 
 use NibbleTech\ExpectationLexer\Tokens\Token;
 
-class LexerConfiguration
+final class LexerConfiguration
 {
     /**
      * @var Token[]

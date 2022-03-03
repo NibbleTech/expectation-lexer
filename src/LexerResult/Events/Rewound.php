@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult\Events;
 
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgressBookmark;
 
-class Rewound implements LexerEvent
+final class Rewound implements LexerEvent
 {
     public function __construct(
         private LexerProgressBookmark $bookmark

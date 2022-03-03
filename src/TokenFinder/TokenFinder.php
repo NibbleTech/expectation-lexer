@@ -9,7 +9,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use Spatie\Regex\Regex;
 
-class TokenFinder
+final class TokenFinder
 {
     public function findToken(
         LexerProgress $lexerProgress,

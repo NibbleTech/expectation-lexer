@@ -7,7 +7,7 @@ namespace NibbleTech\ExpectationLexer\Expectations\Exceptions;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use Exception;
 
-class WrongExpectOption extends Exception
+final class WrongExpectOption extends Exception
 {
     public static function shouldBe(ExpectOption $actual, string $expected): self
     {

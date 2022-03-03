@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\TokenFinder\Expects;
 
 use InvalidArgumentException;
 
-class Expectation
+final class Expectation
 {
     private bool $repeating = false;
     private int $minOccurances = 1;

@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\TokenFinder\Expects;
 
 use InvalidArgumentException;
 
-class ExpectOrder implements ExpectOption
+final class ExpectOrder implements ExpectOption
 {
     /**
      * @var Expectation[]

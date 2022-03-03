@@ -10,7 +10,7 @@ use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
 
-class ExpectOrderResolver implements ExpectationResolver
+final class ExpectOrderResolver implements ExpectationResolver
 {
     private readonly ResolveExpectOption $resolver;
 

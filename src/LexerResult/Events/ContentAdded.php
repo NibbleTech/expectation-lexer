@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult\Events;
 
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 
-class ContentAdded implements LexerEvent
+final class ContentAdded implements LexerEvent
 {
     public function __construct(
         private StringContent $content

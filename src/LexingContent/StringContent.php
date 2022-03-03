@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\LexingContent;
 
-class StringContent
+final class StringContent
 {
     private string $content;
 

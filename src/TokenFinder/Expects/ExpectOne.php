@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\TokenFinder\Expects;
 
 use NibbleTech\ExpectationLexer\Tokens\Token;
 
-class ExpectOne implements ExpectOption
+final class ExpectOne implements ExpectOption
 {
     private Token $token;
 

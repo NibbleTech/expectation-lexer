@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\Tokens;
 
-class UnclassifiedToken extends AbstractToken
+final class UnclassifiedToken extends AbstractToken
 {
     private string $regex;
 

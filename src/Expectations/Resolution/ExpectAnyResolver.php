@@ -11,7 +11,7 @@ use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 
-class ExpectAnyResolver implements ExpectationResolver
+final class ExpectAnyResolver implements ExpectationResolver
 {
     private readonly ResolveExpectOption $resolveExpectOption;
 

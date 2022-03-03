@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult\Events;
 
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgressBookmark;
 
-class Bookmarked implements LexerEvent
+final class Bookmarked implements LexerEvent
 {
     public function __construct(
         private LexerProgressBookmark $bookmark

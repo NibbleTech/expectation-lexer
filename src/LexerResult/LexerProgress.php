@@ -17,7 +17,7 @@ use ReflectionClass;
 /**
  * Event Sourced to enable rewinding functionality to support branch resolution in the ExpectedTokenConfiguration
  */
-class LexerProgress
+final class LexerProgress
 {
     private StringContent $content;
     /**

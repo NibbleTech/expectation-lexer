@@ -12,7 +12,7 @@ use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
 use NibbleTech\ExpectationLexer\TokenFinder\TokenFinder;
 
-class ExpectOneResolver implements ExpectationResolver
+final class ExpectOneResolver implements ExpectationResolver
 {
     private TokenFinder $tokenFinder;
 

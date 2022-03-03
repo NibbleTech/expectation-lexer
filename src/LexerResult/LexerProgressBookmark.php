@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult;
 
 use Ramsey\Uuid\UuidInterface;
 
-class LexerProgressBookmark
+final class LexerProgressBookmark
 {
     public function __construct(
         private UuidInterface $id,

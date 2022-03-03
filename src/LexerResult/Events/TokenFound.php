@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\LexerResult\Events;
 
 use NibbleTech\ExpectationLexer\Tokens\Token;
 
-class TokenFound implements LexerEvent
+final class TokenFound implements LexerEvent
 {
     public function __construct(
         private Token $token

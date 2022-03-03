@@ -6,7 +6,7 @@ namespace NibbleTech\ExpectationLexer\Exceptions;
 
 use Exception;
 
-class ContentStillLeftToParse extends Exception
+final class ContentStillLeftToParse extends Exception
 {
     public static function withRemaining(string $remaining): self
     {

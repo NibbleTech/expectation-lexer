@@ -8,7 +8,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use Exception;
 
-class TokenNotFound extends Exception
+final class TokenNotFound extends Exception
 {
     public static function forToken(
         Token $token,
