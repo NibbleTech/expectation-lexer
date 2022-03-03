@@ -9,17 +9,9 @@ use InvalidArgumentException;
 class ExpectOrder implements ExpectOption
 {
     /**
-     * @var Expectation
-     */
-    private $firstExpects;
-    /**
      * @var Expectation[]
      */
-    private $subsequentExpects = [];
-    /**
-     * @var Expectation[]
-     */
-    private $allExpects = [];
+    private $order = [];
 
     final private function __construct()
     {
@@ -37,36 +29,17 @@ class ExpectOrder implements ExpectOption
             }
         }
 
-        $self = new static();
-        $self->allExpects = $expectations;
-
-        $first = array_shift($expectations);
-        $self->firstExpects = $first;
-        $self->subsequentExpects = $expectations;
+        $self        = new static();
+        $self->order = $expectations;
 
         return $self;
     }
 
-    public function getExpectedNextOptions(): array
-    {
-        return [
-            $this->firstExpects
-        ];
-    }
-
     /**
      * @return Expectation[]
      */
-    public function getSubsequentTokens(): array
+    public function getExpectationOrder(): array
     {
-        return $this->subsequentExpects;
-    }
-
-    /**
-     * @return Expectation[]
-     */
-    public function getAllExpects(): array
-    {
-        return $this->allExpects;
+        return $this->order;
     }
 }

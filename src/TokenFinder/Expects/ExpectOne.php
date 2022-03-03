@@ -27,9 +27,4 @@ class ExpectOne implements ExpectOption
     {
         return $this->token;
     }
-
-    public function getTokenClass(): string
-    {
-        return $this->token::class;
-    }
 }

@@ -121,11 +121,12 @@ class LexerProgress
     {
         $this->eventStore[] = $event;
 
-        $reflection = new ReflectionClass($event);
-
-        $method = 'applyEvent' . $reflection->getShortName();
-
-        $this->$method($event);
+        match ($event::class) {
+            TokenFound::class => $this->applyEventTokenFound($event),
+            ContentAdded::class => $this->applyEventContentAdded($event),
+            Bookmarked::class => $this->applyEventBookmarked($event),
+            Rewound::class => $this->applyEventRewound($event),
+        };
     }
 
     private function applyEventTokenFound(TokenFound $tokenFound): void

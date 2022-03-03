@@ -7,17 +7,12 @@ namespace NibbleTech\ExpectationLexer\TokenFinder;
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
-use NibbleTech\ExpectationLexer\Tokens\Token;
 use NibbleTech\ExpectationLexer\Tokens\UnclassifiedToken;
 use PHPUnit\Framework\TestCase;
 
 class TokenFinderTest extends TestCase
 {
     private TokenFinder $tokenFinder;
-
-    private StringContent $medium;
-
-    private Token $token;
 
     protected function setUp(): void
     {

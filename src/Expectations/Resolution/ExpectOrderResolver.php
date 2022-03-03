@@ -31,7 +31,7 @@ class ExpectOrderResolver implements ExpectationResolver
             throw WrongExpectOption::shouldBe($expectOption, ExpectOrder::class);
         }
 
-        foreach ($expectOption->getAllExpects() as $orderedExpectOption) {
+        foreach ($expectOption->getExpectationOrder() as $orderedExpectOption) {
             $this->resolver->resolve(
                 $lexerProgress,
                 $config,

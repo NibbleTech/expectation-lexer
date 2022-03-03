@@ -17,6 +17,7 @@
         <LessSpecificReturnType errorLevel="info"/>
         <MissingConstructor errorLevel="suppress"/>
         <PropertyNotSetInConstructor errorLevel="suppress"/>
+        <PossiblyUnusedReturnValue errorLevel="suppress" />
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

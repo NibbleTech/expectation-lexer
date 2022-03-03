@@ -31,17 +31,6 @@ class LexerConfiguration
         return $self;
     }
 
-    public function isIgnoredToken(Token $token): bool
-    {
-        foreach ($this->fillerTokens as $ignoredToken) {
-            if ($token instanceof $ignoredToken) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     /**
      * @return Token[]
      */
