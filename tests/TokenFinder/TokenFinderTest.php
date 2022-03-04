@@ -20,7 +20,7 @@ class TokenFinderTest extends TestCase
     }
 
     /**
-     * @covers \Lexer\Lexer\TokenFinder\TokenFinder::findToken
+     * 
      */
     public function test_it_finds_token(): void
     {
@@ -46,7 +46,7 @@ class TokenFinderTest extends TestCase
     }
 
     /**
-     * @covers \Lexer\Lexer\TokenFinder\TokenFinder::findToken
+     * 
      */
     public function test_it_throws_when_failed_to_find_token(): void
     {

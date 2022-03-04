@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 class ExpectOrderResolverTest extends TestCase
 {
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     * 
      */
     public function test_order_of_expect_ones_resolves(): void
     {
@@ -48,7 +48,7 @@ class ExpectOrderResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     * 
      */
     public function test_throws_on_incomplete_order(): void
     {
@@ -74,7 +74,7 @@ class ExpectOrderResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     * 
      */
     public function test_single_level_nested_any_of_resolves(): void
     {
@@ -108,7 +108,7 @@ class ExpectOrderResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     * 
      */
     public function test_double_level_nested_any_of_resolves(): void
     {
@@ -181,7 +181,7 @@ class ExpectOrderResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOrderResolver::resolve
+     * 
      */
     public function test_nested_orders_resolves(): void
     {

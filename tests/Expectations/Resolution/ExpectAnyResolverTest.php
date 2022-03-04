@@ -25,7 +25,7 @@ class ExpectAnyResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     * 
      */
     public function test_any_of_export_one_resolves(): void
     {
@@ -54,7 +54,7 @@ class ExpectAnyResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     * 
      */
     public function test_nested_any_of_resolves(): void
     {
@@ -95,7 +95,7 @@ class ExpectAnyResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     * 
      */
     public function test_double_nested_any_of_resolves(): void
     {
@@ -148,7 +148,7 @@ class ExpectAnyResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     * 
      */
     public function test_any_of_orders(): void
     {
@@ -187,7 +187,7 @@ class ExpectAnyResolverTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectAnyResolver::resolve
+     * 
      */
     public function test_any_of_orders_with_similar_beginnings(): void
     {

@@ -19,7 +19,7 @@ class LexerTest extends TestCase
 {
 
     /**
-     * @covers Lexer::lex
+     * 
      */
     public function test_it_throws_exception_when_cant_find_expected_token(): void
     {
@@ -46,7 +46,7 @@ class LexerTest extends TestCase
     }
 
     /**
-     * @covers Lexer::lex
+     * 
      */
     public function test_it_throws_when_still_content_leftover(): void
     {

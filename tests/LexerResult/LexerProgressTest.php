@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 class LexerProgressTest extends TestCase
 {
     /**
-     * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::new
+     * 
      */
     public function test_constructs(): void
     {
@@ -31,7 +31,7 @@ class LexerProgressTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::addFoundToken
+     * 
      */
     public function test_can_add_found_tokens(): void
     {
@@ -66,7 +66,7 @@ class LexerProgressTest extends TestCase
     }
 
     /**
-     * @covers
+     * 
      */
     public function test_it_can_bookmark_and_rewind_progress(): void
     {
@@ -123,7 +123,7 @@ class LexerProgressTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\LexerResult\LexerProgress::getTokensWithoutFillerTokens
+     * 
      */
     public function test_it_gets_tokens_without_filler_tokens(): void
     {

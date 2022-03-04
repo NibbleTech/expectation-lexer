@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 class ExpectOneResolverTest extends TestCase
 {
     /**
-     * @covers \NibbleTech\ExpectationLexer\Lexer\Expectations\Resolution\ExpectOneResolver::resolve
+     * 
      */
     public function test_expect_one_resolves(): void
     {
@@ -36,7 +36,7 @@ class ExpectOneResolverTest extends TestCase
     }
 
     /**
-     * @covers
+     * 
      */
     public function test_it_handles_filler_tokens(): void
     {

@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ExpectationTest extends TestCase
 {
     /**
-     * @covers
+     * 
      */
     public function test_it_does_not_allow_invalid_max_occurances(): void
     {
@@ -25,7 +25,7 @@ class ExpectationTest extends TestCase
         $expectation->repeatsAtMost(-1);
     }
     /**
-     * @covers
+     * 
      */
     public function test_it_does_not_allow_invalid_min_occurances(): void
     {

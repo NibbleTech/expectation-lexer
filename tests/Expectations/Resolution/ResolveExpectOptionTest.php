@@ -18,7 +18,7 @@ use RuntimeException;
 class ResolveExpectOptionTest extends TestCase
 {
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_ignores_optional_tokens_when_not_found(): void
     {
@@ -40,7 +40,7 @@ class ResolveExpectOptionTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_ignores_optional_tokens_in_an_order(): void
     {
@@ -68,7 +68,7 @@ class ResolveExpectOptionTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_supports_repeating_tokens_with_minimum(): void
     {
@@ -95,7 +95,7 @@ class ResolveExpectOptionTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_throws_when_repeating_token_is_less_than_minimum(): void
     {
@@ -117,7 +117,7 @@ class ResolveExpectOptionTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_supports_repeating_tokens_with_maximum(): void
     {
@@ -144,7 +144,7 @@ class ResolveExpectOptionTest extends TestCase
     }
 
     /**
-     * @covers \NibbleTech\ExpectationLexer\Expectations\Resolution\ResolveExpectOption::resolve
+     * 
      */
     public function test_it_throws_when_repeating_token_is_more_than_maximum(): void
     {
