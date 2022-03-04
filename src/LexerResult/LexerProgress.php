@@ -12,7 +12,6 @@ use NibbleTech\ExpectationLexer\LexerResult\Events\TokenFound;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\Tokens\Token;
 use Ramsey\Uuid\Uuid;
-use ReflectionClass;
 
 /**
  * Event Sourced to enable rewinding functionality to support branch resolution in the ExpectedTokenConfiguration
