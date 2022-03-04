@@ -19,9 +19,7 @@ class TokenFinderTest extends TestCase
         $this->tokenFinder = new TokenFinder();
     }
 
-    /**
-     * 
-     */
+
     public function test_it_finds_token(): void
     {
         $token = UnclassifiedToken::withRegex(
@@ -45,9 +43,7 @@ class TokenFinderTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_throws_when_failed_to_find_token(): void
     {
         $token = UnclassifiedToken::withRegex(

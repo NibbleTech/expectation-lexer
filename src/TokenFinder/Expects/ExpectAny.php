@@ -27,7 +27,7 @@ final class ExpectAny implements ExpectOption
         foreach ($expectations as $expectation) {
             /** @psalm-suppress DocblockTypeContradiction */
             if (!$expectation instanceof Expectation) {
-                throw new InvalidArgumentException("Given ExpectOption is not an instance of " . Expectation::class);
+                throw new InvalidArgumentException("Given Expectation is not an instance of " . Expectation::class);
             }
         }
 

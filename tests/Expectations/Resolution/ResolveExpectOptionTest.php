@@ -12,14 +12,14 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOption;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 class ResolveExpectOptionTest extends TestCase
 {
-    /**
-     * 
-     */
+
     public function test_it_ignores_optional_tokens_when_not_found(): void
     {
         $config = LexerConfiguration::create();
@@ -39,9 +39,7 @@ class ResolveExpectOptionTest extends TestCase
         self::expectNotToPerformAssertions();
     }
 
-    /**
-     * 
-     */
+
     public function test_it_ignores_optional_tokens_in_an_order(): void
     {
         $lexerProgress = LexerProgress::new(
@@ -67,9 +65,7 @@ class ResolveExpectOptionTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_supports_repeating_tokens_with_minimum(): void
     {
         $lexerProgress = LexerProgress::new(
@@ -94,9 +90,7 @@ class ResolveExpectOptionTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_throws_when_repeating_token_is_less_than_minimum(): void
     {
         $lexerProgress = LexerProgress::new(
@@ -116,9 +110,7 @@ class ResolveExpectOptionTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_supports_repeating_tokens_with_maximum(): void
     {
         $lexerProgress = LexerProgress::new(
@@ -143,9 +135,7 @@ class ResolveExpectOptionTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_throws_when_repeating_token_is_more_than_maximum(): void
     {
         $lexerProgress = LexerProgress::new(
@@ -165,6 +155,37 @@ class ResolveExpectOptionTest extends TestCase
                 Expect::one(T_B::token())->repeatsAtMost(3),
                 Expect::one(T_A::token()),
             ]),
+        );
+    }
+    
+    public function test_it_throws_on_unsupported_resolver(): void
+    {
+        $badOption = new class() implements ExpectOption {
+            public function __construct()
+            {
+            }
+        };
+
+        $config = LexerConfiguration::create();
+
+        $lexerProgress = LexerProgress::new(
+            StringContent::with('')
+        );
+
+        $resolver = new ResolveExpectOption();
+
+        $this->expectExceptionObject(
+            new RuntimeException(
+                'No Resolver support for ExpectOption of type [' . $badOption::class . ']'
+            )
+        );
+
+        $resolver->resolve(
+            $lexerProgress,
+            $config,
+            new Expectation(
+                $badOption
+            )
         );
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
+use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
 use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectOneResolver;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
@@ -18,9 +19,20 @@ use PHPUnit\Framework\TestCase;
 
 class ExpectOneResolverTest extends TestCase
 {
-    /**
-     * 
-     */
+    public function test_it_throws_on_wrong_expectation_passed(): void
+    {
+        $this->expectException(WrongExpectOption::class);
+
+        (new ExpectOneResolver())->resolve(
+            LexerProgress::new(
+                StringContent::with("")
+            ),
+            LexerConfiguration::create(),
+            Expect::anyOf([Expect::one(T_A::token())]),
+        );
+    }
+
+
     public function test_expect_one_resolves(): void
     {
         $expectOption = Expect::one(T_A::token());
@@ -35,9 +47,7 @@ class ExpectOneResolverTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_handles_filler_tokens(): void
     {
         $config = LexerConfiguration::create(

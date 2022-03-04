@@ -17,9 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 class LexerProgressTest extends TestCase
 {
-    /**
-     * 
-     */
+
     public function test_constructs(): void
     {
         $content       = StringContent::with('test');
@@ -30,9 +28,7 @@ class LexerProgressTest extends TestCase
         self::assertEquals($content, $lexerProgress->getContent());
     }
 
-    /**
-     * 
-     */
+
     public function test_can_add_found_tokens(): void
     {
         $content       = StringContent::with('abc');
@@ -65,9 +61,7 @@ class LexerProgressTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_can_bookmark_and_rewind_progress(): void
     {
         $content       = StringContent::with('abcd');
@@ -122,9 +116,7 @@ class LexerProgressTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_gets_tokens_without_filler_tokens(): void
     {
         $content       = StringContent::with('a b c');

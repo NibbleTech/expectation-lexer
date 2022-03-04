@@ -18,9 +18,7 @@ use PHPUnit\Framework\TestCase;
 class LexerTest extends TestCase
 {
 
-    /**
-     * 
-     */
+
     public function test_it_throws_exception_when_cant_find_expected_token(): void
     {
         $example = StringContent::with("B");
@@ -45,9 +43,7 @@ class LexerTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_it_throws_when_still_content_leftover(): void
     {
         $example = StringContent::with("abcd");

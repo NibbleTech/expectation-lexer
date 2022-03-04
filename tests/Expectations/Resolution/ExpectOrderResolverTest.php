@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Exceptions\TokenNotFound;
+use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
+use NibbleTech\ExpectationLexer\LexerConfiguration;
+use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
 use NibbleTech\ExpectationLexer\TestHelpers\AssertTokens;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_A;
@@ -16,9 +19,20 @@ use PHPUnit\Framework\TestCase;
 
 class ExpectOrderResolverTest extends TestCase
 {
-    /**
-     * 
-     */
+    public function test_it_throws_on_wrong_expectation_passed(): void
+    {
+        $this->expectException(WrongExpectOption::class);
+
+        (new ExpectOrderResolver())->resolve(
+            LexerProgress::new(
+                StringContent::with("")
+            ),
+            LexerConfiguration::create(),
+            Expect::one(T_A::token())
+        );
+    }
+
+
     public function test_order_of_expect_ones_resolves(): void
     {
         $expectOption = Expect::order([
@@ -47,9 +61,7 @@ class ExpectOrderResolverTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_throws_on_incomplete_order(): void
     {
         $expectOption = Expect::order([
@@ -73,9 +85,7 @@ class ExpectOrderResolverTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_single_level_nested_any_of_resolves(): void
     {
         $expectOption = Expect::order([
@@ -107,9 +117,7 @@ class ExpectOrderResolverTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_double_level_nested_any_of_resolves(): void
     {
         $expectOption = Expect::order([
@@ -180,9 +188,7 @@ class ExpectOrderResolverTest extends TestCase
         );
     }
 
-    /**
-     * 
-     */
+
     public function test_nested_orders_resolves(): void
     {
         $expectOption = Expect::order([

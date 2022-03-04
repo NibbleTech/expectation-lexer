@@ -12,9 +12,7 @@ use RuntimeException;
 
 class LexerProgressBookmarkCollectionTest extends TestCase
 {
-    /**
-     * 
-     */
+
     public function test_it_cannot_add_bookmark_with_lower_token_count(): void
     {
         $collection = new LexerProgressBookmarkCollection();
@@ -36,9 +34,7 @@ class LexerProgressBookmarkCollectionTest extends TestCase
         $collection->addBookmark($otherBookmark);
     }
 
-    /**
-     * 
-     */
+
     public function test_it_can_rewind_to_bookmark(): void
     {
         $collection = new LexerProgressBookmarkCollection();

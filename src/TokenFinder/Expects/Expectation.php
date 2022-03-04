@@ -54,8 +54,9 @@ final class Expectation
         $this->minOccurances = $minOccurances;
         /**
          * Dont allow max occurrences to conflict
+         * @infection-ignore-all
          */
-        if ($this->maxOccurances < $minOccurances) {
+        if ($this->maxOccurances <= $minOccurances) {
             $this->maxOccurances = $minOccurances;
         }
 
@@ -76,8 +77,9 @@ final class Expectation
         $this->maxOccurances = $maxOccurances;
         /**
          * Dont allow min occurrences to conflict
+         * @infection-ignore-all
          */
-        if ($this->minOccurances > $maxOccurances) {
+        if ($this->minOccurances >= $maxOccurances) {
             $this->minOccurances = $maxOccurances;
         }
 
