@@ -42,12 +42,6 @@ final class ResolveExpectOption implements ExpectationResolver
             }
 
             $foundCounter++;
-
-            if ($expectation->repeats()) {
-                if ($foundCounter < $expectation->getMinOccurances()) {
-                    // continue
-                }
-            }
         }
 
 
