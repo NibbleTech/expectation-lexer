@@ -171,4 +171,9 @@ final class LexerProgress
             $this->getContentCursorPosition()
         );
     }
+
+    public function getLatestBookmark(): LexerProgressBookmark
+    {
+        return $this->bookmarks->getLatestBookmark();
+    }
 }

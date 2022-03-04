@@ -15,20 +15,24 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_D;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOrder;
 use PHPUnit\Framework\TestCase;
 
 class ExpectOrderResolverTest extends TestCase
 {
     public function test_it_throws_on_wrong_expectation_passed(): void
     {
-        $this->expectException(WrongExpectOption::class);
+        $expectation = Expect::one(T_A::token());
+        $this->expectExceptionObject(
+            new WrongExpectOption('Unsupported ExpectOption given [' . $expectation->getExpectOption()::class . '], should be [' . ExpectOrder::class . ']')
+        );
 
         (new ExpectOrderResolver())->resolve(
             LexerProgress::new(
                 StringContent::with("")
             ),
             LexerConfiguration::create(),
-            Expect::one(T_A::token())
+            $expectation,
         );
     }
 

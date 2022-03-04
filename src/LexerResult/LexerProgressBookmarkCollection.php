@@ -55,4 +55,9 @@ final class LexerProgressBookmarkCollection
             }
         }
     }
+
+    public function getLatestBookmark(): LexerProgressBookmark
+    {
+        return $this->bookmarks[count($this->bookmarks) - 1];
+    }
 }

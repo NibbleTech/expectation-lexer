@@ -69,4 +69,44 @@ class LexerProgressBookmarkCollectionTest extends TestCase
         self::assertEquals(false, $collection->hasBookmark($third));
         self::assertEquals(false, $collection->hasBookmark($fourth));
     }
+
+    public function test_it_cannot_rewind_to_bookmark_that_does_not_exist(): void
+    {
+        $collection = new LexerProgressBookmarkCollection();
+
+        $first = new LexerProgressBookmark(
+            Uuid::uuid4(),
+            1
+        );
+        $second = new LexerProgressBookmark(
+            Uuid::uuid4(),
+            2
+        );
+        $third = new LexerProgressBookmark(
+            Uuid::uuid4(),
+            2
+        );
+        $fourth = new LexerProgressBookmark(
+            Uuid::uuid4(),
+            2
+        );
+
+        $collection->addBookmark($first);
+        $collection->addBookmark($second);
+        $collection->addBookmark($third);
+        $collection->addBookmark($fourth);
+
+
+        $garbageBookmark = new LexerProgressBookmark(
+            Uuid::uuid4(),
+            100
+        );
+
+        $this->expectExceptionObject(
+            new RuntimeException("Bookmark attempted to rewind to does not exist")
+        );
+
+        $collection->rewindToBookmark($garbageBookmark);
+    }
+
 }

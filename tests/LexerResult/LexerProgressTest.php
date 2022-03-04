@@ -76,11 +76,12 @@ class LexerProgressTest extends TestCase
             T_B::fromLexeme('b')
         );
 
-        $bookmarkId = $lexerProgress->bookmark();
+        $bookmark = $lexerProgress->bookmark();
 
         $lexerProgress->addFoundToken(
             T_C::fromLexeme('c')
         );
+
         $lexerProgress->addFoundToken(
             T_D::fromLexeme('d')
         );
@@ -100,7 +101,7 @@ class LexerProgressTest extends TestCase
             $lexerProgress->getContentCursorPosition()
         );
 
-        $lexerProgress->rewind($bookmarkId);
+        $lexerProgress->rewind($bookmark);
 
         self::assertEquals(
             [
@@ -113,6 +114,11 @@ class LexerProgressTest extends TestCase
         self::assertEquals(
             2,
             $lexerProgress->getContentCursorPosition()
+        );
+
+        self::assertEquals(
+            $bookmark,
+            $lexerProgress->getLatestBookmark(),
         );
     }
 

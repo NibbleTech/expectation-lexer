@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NibbleTech\ExpectationLexer\Expectations\Resolution;
 
 use NibbleTech\ExpectationLexer\Expectations\Exceptions\WrongExpectOption;
-use NibbleTech\ExpectationLexer\Expectations\Resolution\ExpectAnyResolver;
 use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexingContent\StringContent;
@@ -15,12 +14,11 @@ use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_B;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_C;
 use NibbleTech\ExpectationLexer\TestHelpers\Tokens\T_D;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expect;
-use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
+use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectAny;
 use PHPUnit\Framework\TestCase;
 
 class ExpectAnyResolverTest extends TestCase
 {
-
     private ExpectAnyResolver $resolver;
 
     protected function setUp(): void
@@ -30,14 +28,17 @@ class ExpectAnyResolverTest extends TestCase
 
     public function test_it_throws_on_wrong_expectation_passed(): void
     {
-        $this->expectException(WrongExpectOption::class);
+        $expectation = Expect::one(T_A::token());
+        $this->expectExceptionObject(
+            new WrongExpectOption('Unsupported ExpectOption given [' . $expectation->getExpectOption()::class . '], should be [' . ExpectAny::class . ']')
+        );
 
         $this->resolver->resolve(
             LexerProgress::new(
                 StringContent::with("")
             ),
             LexerConfiguration::create(),
-            Expect::one(T_A::token())
+            $expectation,
         );
     }
 
