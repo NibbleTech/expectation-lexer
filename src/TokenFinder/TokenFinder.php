@@ -17,7 +17,12 @@ final class TokenFinder
     ): Token {
         $lookahead = $lexerProgress->getContentLookahead();
 
-        $foundString = Regex::match($token->getRegex(), $lookahead)
+        /**
+         * Force "start of string" condition on regex string
+         */
+        $regex = "/^" . substr($token->getRegex(), 1, strlen($token->getRegex()));
+
+        $foundString = Regex::match($regex, $lookahead)
             ->result();
 
         if ($foundString === null) {
