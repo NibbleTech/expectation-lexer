@@ -10,6 +10,7 @@ use NibbleTech\ExpectationLexer\LexerResult\LexerProgress;
 use NibbleTech\ExpectationLexer\LexerConfiguration;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\Expectation;
 use NibbleTech\ExpectationLexer\TokenFinder\Expects\ExpectOne;
+use NibbleTech\ExpectationLexer\TokenFinder\StartOfStringTokenFinder;
 use NibbleTech\ExpectationLexer\TokenFinder\TokenFinder;
 
 final class ExpectOneResolver implements ExpectationResolver
@@ -18,7 +19,7 @@ final class ExpectOneResolver implements ExpectationResolver
 
     public function __construct()
     {
-        $this->tokenFinder = new TokenFinder();
+        $this->tokenFinder = new StartOfStringTokenFinder();
     }
 
     public function resolve(

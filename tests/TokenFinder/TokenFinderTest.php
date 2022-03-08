@@ -16,7 +16,7 @@ class TokenFinderTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tokenFinder = new TokenFinder();
+        $this->tokenFinder = new StartOfStringTokenFinder();
     }
 
 
