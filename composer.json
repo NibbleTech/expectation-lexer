@@ -18,7 +18,7 @@
         "ramsey/uuid": "^4.3"
     },
     "require-dev": {
-        "vimeo/psalm": "^4.1",
+        "vimeo/psalm": "^4.23",
         "kint-php/kint": "^4.1",
         "phpunit/phpunit": "^9.5",
         "friendsofphp/php-cs-fixer": "^3.8",
