@@ -23,7 +23,7 @@
         "phpunit/phpunit": "^9.5",
         "friendsofphp/php-cs-fixer": "^3.8",
         "psalm/plugin-phpunit": "^0.17.0",
-        "roave/infection-static-analysis-plugin": "^1.19"
+        "roave/infection-static-analysis-plugin": "^1.20"
     },
     "config": {
         "allow-plugins": {
