@@ -21,7 +21,7 @@
         "vimeo/psalm": "^4.26",
         "kint-php/kint": "^4.2",
         "phpunit/phpunit": "^9.5",
-        "friendsofphp/php-cs-fixer": "^3.10",
+        "friendsofphp/php-cs-fixer": "^3.14",
         "psalm/plugin-phpunit": "^0.17.0",
         "roave/infection-static-analysis-plugin": "^1.22"
     },
